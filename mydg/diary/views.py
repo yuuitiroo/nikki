@@ -5,6 +5,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 from .forms import PageForm
 from .models import Page
+from django.db import models  # ←★ここ！
 
 class IndexView(LoginRequiredMixin,View):
     def get(self, request):
@@ -32,8 +33,18 @@ class PageCreateView(LoginRequiredMixin,View):
 
 class PageListView(LoginRequiredMixin,View):
     def get(self, request):
-        page_list = Page.objects.all()
-        return render(request, "diary/page_list.html",{"page_list":page_list})
+        query = request.GET.get("q")
+        if query:
+            page_list = Page.objects.filter(
+                models.Q(tile_icontains=query) |
+                models.Q(body_icontains=query)
+            )
+        else:
+            page_list = Page.objects.all()
+        return render(request, "diary/page_list.html",{
+            "page_list":page_list,
+            "query": query,
+            })
 
 
 class PageDetailView(LoginRequiredMixin,View):

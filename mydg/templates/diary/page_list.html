@@ -1,6 +1,20 @@
 {% extends "base/diary_base.html" %}
 {% block body %}
 
+<h2>日記一覧</h2>
+
+<!-- 🔍 検索フォーム -->
+<form method="get" style="margin-bottom: 20px;">
+    <input type="text" name="q" placeholder="キーワード検索" value="{{ query|default:'' }}">
+    <button type="submit">検索</button>
+</form>
+
+<!-- 🔍 検索ワード表示 -->
+{% if query %}
+    <p>「<strong>{{ query }}</strong>」の検索結果：</p>
+{% endif %}
+
+<!-- 📄 日記リスト -->
 <ul>
     {% for page in page_list %}
         <li>{{ page.page_date }}: 
@@ -10,5 +24,5 @@
         <div>日記のページが一つもありません。</div>
     {% endfor %}
 </ul>
-   
+
 {% endblock %}
