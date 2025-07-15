@@ -36,7 +36,7 @@ class PageListView(LoginRequiredMixin,View):
         query = request.GET.get("q")
         if query:
             page_list = Page.objects.filter(
-                models.Q(tile__icontains=query) |
+                models.Q(title__icontains=query) |
                 models.Q(body__icontains=query)
             )
         else:
