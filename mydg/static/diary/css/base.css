@@ -1,20 +1,57 @@
 body {
     width: 700px;
     min-height: 300px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 1.5%;
-    margin-bottom: 1.5%;
-    background-color: #ffffff;
+    margin: 1.5% auto;
+    background-color: #f8f9fa;
+    font-family: "Segoe UI", sans-serif;
+    color: #333;
 }
+
 h1 {
-    font-size: 30px;
     font-size: 3rem;
-    position: relative;
-    padding: 1.5rem;
     text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
 }
+
 h1 span {
-    font-size: 18px;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 0.5rem;
+    color: #e0e0e0;
+}
+
+/* カード風リスト */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: white;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: 0.2s;
+}
+
+ul li:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* リンクのスタイル */
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
 }
