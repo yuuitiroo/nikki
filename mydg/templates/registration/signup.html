@@ -1,0 +1,11 @@
+{% extends "base/diary_base.html" %}
+{% block body %}
+    <h2>新規アカウント作成</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">登録</button>
+    </form>
+    <p>すでにアカウントをお持ちの方は<a href="{% url 'login' %}">こちら</a></p>
+
+{% endblock %}

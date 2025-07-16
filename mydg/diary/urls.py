@@ -1,7 +1,7 @@
 
 from django.urls import path
 from .import views
-
+from .views_auth import SignupView
 
 app_name = "diary"
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path("page/<uuid:id>/update/", views.page_update, name="page_update"),
     path("page/<uuid:id>/delete/",views.page_delete, name="page_delete"),
     #path('diary/', views.p, name='diary'),  # '/diary/' に対応するビュー
+    path("signup/" , SignupView.as_view(), name="sianup")
 ]
