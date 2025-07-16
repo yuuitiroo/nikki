@@ -11,7 +11,7 @@ body {
 h1 {
     font-size: 3rem;
     text-align: center;
-    background-color: #007bff;
+    /*background-color: #007bff;*/
     color: white;
     padding: 0.8rem 1rem;
     border-radius: 10px;
@@ -21,7 +21,7 @@ h1 {
 }
 
 h1 a {
-    color: white;
+    color: rgb(10, 10, 10);
     text-decoration: none;
 }
 
