@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from diary.views_auth import SignupView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +28,5 @@ urlpatterns = [
     path('', include('diary.urls')),  
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    
+    path("signup/" , SignupView.as_view(), name="signup")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
