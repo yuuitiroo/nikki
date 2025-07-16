@@ -22,6 +22,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('diary/', include('diary.urls')),  # ← これが必要！
     path('login/', auth_views.LoginView.as_view(), name='login'),  # ← これを追加
     path('', include('diary.urls')),  # ← ここがルート
     path('accounts/', include('accounts.urls')),
