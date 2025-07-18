@@ -1,6 +1,7 @@
 from django.db import models
 from pathlib import Path
 import uuid
+from django.contrib.auth.models import User
 
 class Page(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,verbose_name="ID")
@@ -9,6 +10,7 @@ class Page(models.Model):
     page_date = models.DateField(verbose_name="日付")
     picture = models.ImageField(
     upload_to="diary/picture/", blank=True, null=True, verbose_name="写真")
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     #url = models.URLField(blank=True, null=True, verbose_name="関連リンク")  
     created_at = models.DateTimeField(auto_now_add=True,verbose_name="作成日時")
     updated_at = models.DateTimeField(auto_now=True,verbose_name="更新日時")
