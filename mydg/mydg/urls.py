@@ -30,5 +30,5 @@ urlpatterns = [
     path("diary/", include("diary.urls", namespace="diary")),
     path("", include("diary.urls")),  # ホームを diary に飛ばす場合のみ
 
-    path("accounts/", include("django.contrib.auth.urls")),  # accounts.urls が存在しないならこれだけ
+    path("accounts/", include(("django.contrib.auth.urls", "accounts"), namespace="accounts")),  # accounts.urls が存在しないならこれだけ
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
