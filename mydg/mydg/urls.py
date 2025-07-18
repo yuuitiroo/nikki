@@ -19,17 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from . import views_auth
 from diary.views_auth import SignupView
 
 urlpatterns = [
     path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
-    path('admin/', admin.site.urls),
-    path('diary/', include('diary.urls', namespace='diay')),  
-    path('login/', auth_views.LoginView.as_view(), name='login'),  
-    path('', include('diary.urls')),  
-    path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path("signup/" , SignupView.as_view(), name="signup")
+    path("signup/", SignupView.as_view(), name="signup"),
+    
+    path("admin/", admin.site.urls),
+    path("diary/", include("diary.urls", namespace="diary")),
+    path("", include("diary.urls")),  # ホームを diary に飛ばす場合のみ
+
+    path("accounts/", include("django.contrib.auth.urls")),  # accounts.urls が存在しないならこれだけ
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
