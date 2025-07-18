@@ -13,7 +13,6 @@
         <div style ="text-align: right; padding: 10px;" >
             {% if user.is_authenticated %}
                 <span>ログイン中：{{ user.username }}</span> |
-                <a href="{% url 'logout' %}?next={{ request.path }}">ログアウト</a> |
                 <a href="{% url 'login' %}?next={{ request.path }}">別のアカウントに切り替える</a>
             {% else %}
                 <a href="{% url 'login' %}?next={{ request.path }}">ログイン</a>
