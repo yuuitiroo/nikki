@@ -23,7 +23,7 @@ from diary.views_auth import SignupView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('diary/', include('diary.urls')),  
+    path('diary/', include('diary.urls', namespace='diay')),  
     path('login/', auth_views.LoginView.as_view(), name='login'),  
     path('', include('diary.urls')),  
     path('accounts/', include('accounts.urls')),

@@ -26,6 +26,8 @@ class PageCreateView(LoginRequiredMixin,View):
     def post(self, request):
         form = PageForm(request.POST,request.FILES)
         if form.is_valid():
+            page = form.save(commit=False)
+            page.author = request.user
             form.save()
             return redirect("diary:index")
         return render(request, "diary/page_form.html",{"form":form})
@@ -37,10 +39,11 @@ class PageListView(LoginRequiredMixin,View):
         if query:
             page_list = Page.objects.filter(
                 models.Q(title__icontains=query) |
-                models.Q(body__icontains=query)
+                models.Q(body__icontains=query),
+                author = request.user
             )
         else:
-            page_list = Page.objects.all()
+            page_list = Page.objects.filter(author = request.user)
         return render(request, "diary/page_list.html",{
             "page_list":page_list,
             "query": query,
