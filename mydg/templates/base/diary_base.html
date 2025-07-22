@@ -14,7 +14,7 @@
             {% if user.is_authenticated %}
                 <span>ログイン中：{{ user.username }}</span> |
                 <a href="{% url 'login' %}?next={{ request.path }}">別のアカウントに切り替える</a>
-                <a href="{% url 'diary:delete_account' %}">アカウント削除</a>
+                <a href="{% url 'registration:delete_account' %}">アカウント削除</a>
             {% else %}
                 <a href="{% url 'login' %}?next={{ request.path }}">ログイン</a>
                 <a href="{% url 'signup' %}">新規登録</a>
