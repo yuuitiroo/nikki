@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from diary.views_auth import SignupView
-
+from diary.views_auth import DeleteAccountView
 
 urlpatterns = [
     path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
@@ -29,6 +29,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("diary/", include("diary.urls", namespace="diary")),
     path("", include("diary.urls")),  # ホームを diary に飛ばす場合のみ
-
+    path("delete_account/", DeleteAccountView.as_view(), name="delete_account"),
     path("accounts/", include(("django.contrib.auth.urls", "accounts"), namespace="accounts")),  # accounts.urls が存在しないならこれだけ
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
