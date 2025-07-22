@@ -20,13 +20,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from diary.views_auth import SignupView
-from diary.views_auth import DeleteAccountView
+
 
 urlpatterns = [
     path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("signup/", SignupView.as_view(), name="signup"),
-    path("delete_account/", DeleteAccountView.as_view(), name="delete_account"),
     path("admin/", admin.site.urls),
     path("diary/", include("diary.urls", namespace="diary")),
     path("", include("diary.urls")),  # ホームを diary に飛ばす場合のみ
